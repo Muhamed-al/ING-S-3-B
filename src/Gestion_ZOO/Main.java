@@ -6,39 +6,35 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in)
-                ;
+        Scanner scanner = new Scanner(System.in);
         Zoo zoo = new Zoo();
-        String choix;
+       while(true){
+           afficheMenu();
+           int choix = scanner.nextInt();
+           switch (choix){
+               case 1:
+                   ajouterAnimal(scanner,zoo, TypeAnimal.MAMMIFERE);
+                   break;
+               case 2:
+                   ajouterAnimal(scanner,zoo, TypeAnimal.OISEAU);
+                   break;
+               case 3:
+                   ajouterAnimal(scanner, zoo,TypeAnimal.REPTILE);
+                   break;
+               case 4:
+                   zoo.afficherAnimaux();
+                   break;
+               case 5:
+                   zoo.faireDuBruitTous();
+                   break;
+               case 6:
+                   System.out.println("fermeture ....");
+                   return;
+               default:
+                   System.out.println("Option Introuvable ");
 
-        do {
-            afficheMenu();
-            choix = scanner.next().trim();
-
-            switch (choix){
-                case "1":
-                    ajouterAnimal(scanner,zoo, TypeAnimal.MAMMIFERE);
-                    break;
-                case "2":
-                    ajouterAnimal(scanner,zoo, TypeAnimal.OISEAU);
-                    break;
-                case "3":
-                    ajouterAnimal(scanner, zoo,TypeAnimal.REPTILE);
-                    break;
-                case "4":
-                    zoo.afficherAnimaux();
-                    break;
-                case "5":
-                    zoo.faireDuBruitTous();
-                    break;
-                case "6":
-                    System.out.println("fermeture ....");                    break;
-                default:
-                    System.out.println("Option Introuvable ");
-
-            }
-
-        }while (!choix.equals("6"));
+           }
+       }
 
     }
 
@@ -49,22 +45,24 @@ public class Main {
         int age = scanner.nextInt();
 
         switch (typeAnimal){
-            case MAMMIFERE -> {
+            case MAMMIFERE:
                 System.out.println("temperature ");
                 double temp = scanner.nextDouble();
                 zoo.ajouterAnimal(new Mammifere(nom,age,temp));
-            }
-            case OISEAU -> {
+                break;
+            case OISEAU :
                 System.out.println("Envergure  ");
                 double env = scanner.nextDouble();
                 zoo.ajouterAnimal(new Oiseau(nom,age,env));
-            }
-            case REPTILE -> {
+                break;
+            case REPTILE :
                 System.out.println("Venimeux (true/false) ");
-                boolean temp = scanner.nextBoolean();
-                zoo.ajouterAnimal(new Reptile(nom,age,temp));
-            }
-
+                boolean isVenimaux = scanner.nextBoolean();
+                zoo.ajouterAnimal(new Reptile(nom,age,isVenimaux));
+                break;
+            default:
+                System.out.println("error");
+                break;
         }
     }
 
