@@ -1,4 +1,4 @@
-package Gestion_ZOO;
+package Gestion_ZOO_tableau;
 
 public enum TypeAnimal {
 

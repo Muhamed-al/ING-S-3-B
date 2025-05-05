@@ -1,4 +1,4 @@
-package Gestion_ZOO;
+package Gestion_ZOO_tableau;
 
 abstract class Animal extends AnimalActions {
     private String nom;

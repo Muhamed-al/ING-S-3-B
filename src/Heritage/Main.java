@@ -3,6 +3,7 @@ package Heritage;
 public class Main {
 
     public static void main(String[] args) {
+
         Personne p = new Personne("Amine", "2i8Ft@example.com");
         p.afficherDetails();
 
